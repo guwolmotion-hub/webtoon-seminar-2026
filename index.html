@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXT WEBTOON × 웹툰의 내일 — 영상 기획서</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #00E676;
+      --green-dark: #00C853;
+      --black: #111111;
+      --dark: #1A1A1A;
+      --gray-dark: #333333;
+      --gray-mid: #666666;
+      --gray-light: #CCCCCC;
+      --bg: #F7F7F7;
+      --white: #FFFFFF;
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--white);
+      color: var(--gray-dark);
+      font-size: 14px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 0 28px; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeInUp 0.6s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+
+    /* ===== TOP BANNER ===== */
+    .top-banner {
+      background: var(--green);
+      color: var(--black);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: var(--black);
+      padding: 72px 0 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-wm {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-8deg);
+      font-size: 130px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.03);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-size: 38px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .hero-title .accent { color: var(--green); }
+    .hero-tagline {
+      font-size: 16px;
+      color: rgba(255,255,255,0.55);
+      font-weight: 400;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .hero-tagline strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+    .hero-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+    }
+    .hero-card-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .hero-card-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.5;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 24px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+    }
+    .hero-meta span { color: rgba(255,255,255,0.55); font-weight: 500; }
+
+    /* ===== SECTION ===== */
+    .section { padding: 60px 0; border-top: 1px solid #EBEBEB; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green-dark);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-label::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .section-title {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--black);
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+    .section-desc { font-size: 14px; color: var(--gray-mid); margin-bottom: 32px; }
+
+    /* ===== PURPOSE CARDS ===== */
+    .purpose-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .purpose-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 26px 22px;
+      border-top: 3px solid var(--green);
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .purpose-num {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .purpose-title { font-size: 14px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+    .purpose-text { font-size: 13px; color: var(--gray-mid); line-height: 1.7; }
+
+    /* ===== CONCEPT ===== */
+    .concept-hero {
+      background: var(--black);
+      border-radius: var(--radius);
+      padding: 44px 40px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .concept-hero::after {
+      content: '내일';
+      position: absolute;
+      right: 32px;
+      bottom: -10px;
+      font-size: 120px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.04);
+      pointer-events: none;
+      line-height: 1;
+    }
+    .concept-tag-line {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .concept-headline {
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .concept-headline .hl { color: var(--green); }
+    .concept-body {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.85;
+      max-width: 560px;
+      margin-bottom: 28px;
+    }
+    .concept-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .concept-pill {
+      background: rgba(0,230,118,0.12);
+      border: 1px solid rgba(0,230,118,0.3);
+      color: var(--green);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .tone-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .tone-card {
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      padding: 20px 22px;
+      border-left: 3px solid var(--green);
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .tone-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green-dark);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .tone-text { font-size: 13px; color: var(--gray-dark); line-height: 1.7; }
+
+    /* ===== STORY FLOW ===== */
+    .story-flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+      margin-bottom: 8px;
+    }
+    .story-flow::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 10%;
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(to right, var(--green), #E8E8E8);
+      z-index: 0;
+    }
+    .story-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 8px;
+      position: relative;
+      z-index: 1;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .story-dot {
+      width: 56px; height: 56px;
+      background: var(--black);
+      border: 3px solid var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 12px;
+      flex-shrink: 0;
+    }
+    .story-step-title { font-size: 12px; font-weight: 700; color: var(--black); margin-bottom: 4px; }
+    .story-step-text { font-size: 11px; color: var(--gray-mid); line-height: 1.5; }
+
+    /* ===== TIMELINE TABLE ===== */
+    .tl-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .tl-table thead tr { background: var(--black); color: var(--white); }
+    .tl-table th {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .tl-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #F0F0F0;
+      vertical-align: top;
+    }
+    .tl-table tr:last-child td { border-bottom: none; }
+    .tl-time-cell { font-size: 12px; font-weight: 700; color: var(--black); white-space: nowrap; }
+    .tl-dur { font-size: 12px; color: var(--gray-mid); text-align: center; white-space: nowrap; }
+    .tl-session { font-size: 13px; color: var(--gray-dark); line-height: 1.5; }
+    .tl-person { font-size: 12px; color: var(--gray-mid); white-space: nowrap; }
+    .tl-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+    .tl-tag-open    { background: #E8E8E8; color: #555; }
+    .tl-tag-1       { background: #E3F2FD; color: #1565C0; }
+    .tl-tag-break   { background: #E8F5E9; color: #2E7D32; }
+    .tl-tag-2       { background: #F3E5F5; color: #6A1B9A; }
+    .tl-tag-3       { background: #FFF3E0; color: #E65100; }
+    .tl-tag-end     { background: #F5F5F5; color: #666; }
+    .tl-tag-special { background: var(--green); color: var(--black); }
+    .tl-row-break   { background: #FAFFF9; }
+    .tl-row-2       { background: #FDFAFF; }
+    .tl-row-special { background: #F0FFF4; }
+
+    /* ===== INTERVIEW BOX ===== */
+    .interview-wrap {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .interview-block {
+      background: var(--white);
+      border: 1px solid #E0F2E9;
+      border-left: 3px solid var(--green);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+    .interview-who {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green-dark);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .interview-qs {
+      margin: 0;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .interview-qs li {
+      font-size: 12px;
+      color: var(--gray-dark);
+      line-height: 1.65;
+    }
+    .interview-note {
+      font-size: 11px;
+      color: var(--gray-mid);
+      font-style: italic;
+      margin-top: 6px;
+      padding-left: 4px;
+    }
+
+    /* ===== CHANNEL ===== */
+    .channel-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .channel-card {
+      background: var(--white);
+      border: 1px solid #E8E8E8;
+      border-radius: var(--radius);
+      padding: 28px 26px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .channel-icon { font-size: 28px; margin-bottom: 12px; }
+    .channel-name { font-size: 18px; font-weight: 900; color: var(--black); margin-bottom: 10px; }
+    .channel-desc { font-size: 13px; color: var(--gray-mid); line-height: 1.75; margin-bottom: 14px; }
+    .channel-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .channel-tag {
+      background: var(--bg);
+      color: var(--gray-dark);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* ===== REFERENCE ===== */
+    .ref-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .ref-card {
+      background: var(--white);
+      border: 1px solid #E8E8E8;
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .ref-cat { font-size: 10px; font-weight: 700; color: var(--green-dark); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .ref-title { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+    .ref-desc { font-size: 13px; color: var(--gray-mid); line-height: 1.7; flex: 1; margin-bottom: 16px; }
+    .ref-btn {
+      display: inline-block;
+      background: var(--green);
+      color: var(--black);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      text-align: center;
+    }
+    .ref-btn:hover { background: var(--green-dark); }
+
+    /* ===== CLOSING BANNER ===== */
+    .closing-banner {
+      background: var(--black);
+      border-radius: var(--radius);
+      padding: 44px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin: 56px 0 0;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .closing-banner::before {
+      content: 'NEXT WEBTOON';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 80px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.03);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .closing-quote {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .closing-quote .hl { color: var(--green); }
+    .closing-sub { font-size: 14px; color: rgba(255,255,255,0.5); }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--black);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 12px;
+      margin-top: 64px;
+    }
+    .footer strong { color: var(--green); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 700px) {
+      .hero-cards, .purpose-grid, .tone-grid,
+      .channel-grid, .ref-grid { grid-template-columns: 1fr; }
+      .story-flow { grid-template-columns: 1fr 1fr; }
+      .story-flow::before { display: none; }
+      .hero-title { font-size: 26px; }
+      .concept-headline { font-size: 22px; }
+      .concept-hero { padding: 28px 22px; }
+      .closing-banner { padding: 32px 22px; }
+      .closing-quote { font-size: 18px; }
+    }
+
+    /* ===== PRINT ===== */
+    @media print {
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .purpose-card, .tone-card, .story-step, .channel-card,
+      .ref-card, .concept-hero, .closing-banner,
+      .tl-table tr, .interview-block { page-break-inside: avoid; break-inside: avoid; }
+      h1, h2, h3, .section-title { page-break-after: avoid; }
+      a[href]::after { content: none !important; }
+      nav, .top-banner { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    '내일' 라마 작가 × '림딩동' 권오준 작가 × SBS아카데미컴퓨터아트학원
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-wm">NEXT WEBTOON</div>
+    <div class="container">
+      <div class="fade-in">
+        <p class="hero-eyebrow">2026 Webtoon Seminar · Video Planning</p>
+        <h1 class="hero-title">NEXT WEBTOON<br>× <span class="accent">웹툰의 내일</span><br>영상 기획서</h1>
+        <p class="hero-tagline">
+          세미나 녹화물이 아닌, <strong>행사 홍보 후기 영상</strong><br>
+          "SBS아카데미 다니면 이런 것도 해요."
+        </p>
+      </div>
+      <div class="hero-cards fade-in delay-1">
+        <div class="hero-card">
+          <div class="hero-card-label">Date</div>
+          <div class="hero-card-value">2026.04.25(토)<br>14:00 — 17:00</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-label">Speaker</div>
+          <div class="hero-card-value">라마 작가 ('내일')<br>권오준 작가 ('림딩동')</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-label">Location</div>
+          <div class="hero-card-value">서울 강남구 역삼<br>포스코 타워</div>
+        </div>
+      </div>
+      <div class="hero-meta fade-in delay-2">
+        <div>문서 버전 <span>v2.0</span></div>
+        <div>작성일 <span>2026.04.07</span></div>
+        <div>주최 <span>SBS아카데미컴퓨터아트학원</span></div>
+        <div>주관 <span>교육혁신위원회</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01. 영상의 목적 -->
+  <section class="section">
+    <div class="container">
+      <div class="fade-in">
+        <p class="section-label">01 Purpose</p>
+        <h2 class="section-title">영상의 목적</h2>
+        <p class="section-desc">이 영상으로 무엇을 전달할 것인가.</p>
+      </div>
+      <div class="purpose-grid fade-in delay-1">
+        <div class="purpose-card">
+          <div class="purpose-num">01</div>
+          <div class="purpose-title">경험을 보여주는 홍보</div>
+          <div class="purpose-text">유명 작가를 직접 만나고 강연도 듣는 경험. 학원에서 이런 걸 한다는 걸 자연스럽게 보여주는 게 목적이다.</div>
+        </div>
+        <div class="purpose-card">
+          <div class="purpose-num">02</div>
+          <div class="purpose-title">예비 수강생 공감 유도</div>
+          <div class="purpose-text">영상을 보는 사람이 "나도 저기 가보고 싶다"는 생각이 들면 된다. 참석자 인터뷰가 이 역할을 한다.</div>
+        </div>
+        <div class="purpose-card">
+          <div class="purpose-num">03</div>
+          <div class="purpose-title">신규 웹툰 과정 노출</div>
+          <div class="purpose-text">광고처럼 보이지 않으면서 신규 과정에 자연스럽게 관심이 가도록. 현장 후기 형식이라 거부감 없이 전달된다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02. 영상 콘셉트 & 톤 -->
+  <section class="section">
+    <div class="container">
+      <div class="fade-in">
+        <p class="section-label">02 Concept &amp; Tone</p>
+        <h2 class="section-title">영상 콘셉트 &amp; 톤</h2>
+        <p class="section-desc">이 영상은 어떤 느낌이어야 하는가.</p>
+      </div>
+
+      <div class="concept-hero fade-in delay-1">
+        <div class="concept-tag-line">Core Message</div>
+        <h2 class="concept-headline">
+          웹툰 작가를 꿈꾸는<br>사람들에게 —<br>
+          <span class="hl">"너의 '내일'을 응원해"</span>
+        </h2>
+        <p class="concept-body">
+          세미나 강연을 하나하나 담는 기록 영상이 아니다.<br>
+          "우리 이런 세미나 했어요" — 현장 분위기, 참석자 반응, 작가 인터뷰를<br>
+          짧고 보기 좋게 엮어서 학원 홍보로 쓰는 후기 영상이다.
+        </p>
+        <div class="concept-pills">
+          <span class="concept-pill"># 행사 후기</span>
+          <span class="concept-pill"># 현장 분위기</span>
+          <span class="concept-pill"># 참석자 인터뷰</span>
+          <span class="concept-pill"># 학원 홍보</span>
+          <span class="concept-pill"># 웹툰 과정</span>
+        </div>
+      </div>
+
+      <div class="tone-grid fade-in delay-2" style="margin-top:20px">
+        <div class="tone-card">
+          <div class="tone-label">영상 분위기</div>
+          <div class="tone-text">빠른 컷 위주로 짧고 보기 좋게. 강연 영상이 아니라 행사 브이로그에 가까운 톤. 너무 무겁지 않게.</div>
+        </div>
+        <div class="tone-card">
+          <div class="tone-label">색감 &amp; 화질</div>
+          <div class="tone-text">밝고 깔끔한 톤. 피부색 자연스럽게, 그린 포인트 살리기. 인스타 릴스와 유튜브 둘 다 쾌적하게 보이도록.</div>
+        </div>
+        <div class="tone-card">
+          <div class="tone-label">음악</div>
+          <div class="tone-text">어쿠스틱 인디팝 계열. 강연 장면은 볼륨 낮추고 현장음 살리기. 사인회 구간은 리듬감 있게 전환.</div>
+        </div>
+        <div class="tone-card">
+          <div class="tone-label">자막 &amp; 그래픽</div>
+          <div class="tone-text">인터뷰 핵심 발언은 강조 자막 처리. 작가 이름/작품명 타이틀 카드. 과한 그래픽 이펙트는 자제.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03. 영상 스토리라인 -->
+  <section class="section">
+    <div class="container">
+      <div class="fade-in">
+        <p class="section-label">03 Story Line</p>
+        <h2 class="section-title">영상 스토리라인</h2>
+        <p class="section-desc">영상이 흘러가는 순서 — 시작부터 끝까지 큰 그림.</p>
+      </div>
+
+      <div class="story-flow fade-in delay-1">
+        <div class="story-step">
+          <div class="story-dot">01</div>
+          <div class="story-step-title">오프닝</div>
+          <div class="story-step-text">현장 도착,<br>행사 분위기 컷</div>
+        </div>
+        <div class="story-step">
+          <div class="story-dot">02</div>
+          <div class="story-step-title">강연 하이라이트</div>
+          <div class="story-step-text">작가 발언 핵심만<br>짧게 편집</div>
+        </div>
+        <div class="story-step">
+          <div class="story-dot">03</div>
+          <div class="story-step-title">참석자 인터뷰</div>
+          <div class="story-step-text">현장 반응,<br>생생한 이야기</div>
+        </div>
+        <div class="story-step">
+          <div class="story-dot">04</div>
+          <div class="story-step-title">사인회</div>
+          <div class="story-step-text">작가와의 만남,<br>현장 분위기</div>
+        </div>
+        <div class="story-step">
+          <div class="story-dot">05</div>
+          <div class="story-step-title">클로징</div>
+          <div class="story-step-text">마무리 멘트,<br>학원 브랜딩</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04. 세미나 타임라인 & 인터뷰 -->
+  <section class="section">
+    <div class="container">
+      <div class="fade-in">
+        <p class="section-label">04 D-Day Timeline &amp; Interview</p>
+        <h2 class="section-title">당일 타임라인 &amp; 인터뷰 질문</h2>
+        <p class="section-desc">2026.04.25(토) 14:00 — 17:00 · 총 3시간 · 인터뷰는 쉬는시간 & 사인회 타임에 진행</p>
+      </div>
+      <div class="fade-in delay-1" style="overflow-x:auto">
+        <table class="tl-table">
+          <thead>
+            <tr>
+              <th style="width:130px">시간</th>
+              <th style="width:55px">소요</th>
+              <th style="width:75px">구분</th>
+              <th>내용</th>
+              <th style="width:130px">담당 / 출연</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <td class="tl-time-cell">14:00 — 14:10</td>
+              <td class="tl-dur">10분</td>
+              <td><span class="tl-tag tl-tag-open">오프닝</span></td>
+              <td class="tl-session">2026 웹툰 트렌드 리포트</td>
+              <td class="tl-person">사회자</td>
+            </tr>
+
+            <tr>
+              <td class="tl-time-cell">14:10 — 14:40</td>
+              <td class="tl-dur">30분</td>
+              <td><span class="tl-tag tl-tag-1">1부</span></td>
+              <td class="tl-session">AI 실무 워크플로우 시연</td>
+              <td class="tl-person">권오준 작가</td>
+            </tr>
+
+            <tr class="tl-row-break">
+              <td class="tl-time-cell">14:40 — 15:00</td>
+              <td class="tl-dur">20분</td>
+              <td><span class="tl-tag tl-tag-break">인터벌</span></td>
+              <td class="tl-session">
+                쉬는시간 · 안내
+                <div style="margin-top:10px;font-weight:700;font-size:12px;color:var(--green-dark)">▶ 전반 인터뷰 진행 (영상팀)</div>
+                <div class="interview-wrap">
+
+                  <div class="interview-block">
+                    <div class="interview-who">권오준 작가 인터뷰</div>
+                    <ol class="interview-qs">
+                      <li>이 과정을 직접 개발하게 된 계기가 무엇인가요?</li>
+                      <li>AI를 웹툰 작업에 활용할 때 가장 중요하게 생각하는 점은요?</li>
+                      <li>웹툰 작가를 꿈꾸는 분들에게 한마디 해주신다면?</li>
+                    </ol>
+                  </div>
+
+                  <div class="interview-block">
+                    <div class="interview-who">참석자 인터뷰 <span style="font-weight:400;color:#aaa">(3 — 4명)</span></div>
+                    <ol class="interview-qs">
+                      <li>오늘 이 자리에 오게 된 계기가 뭔가요?</li>
+                      <li>웹툰 작가의 꿈, 언제부터 가지고 계셨어요?</li>
+                      <li>지금 웹툰 공부를 하고 계신 건가요, 아니면 시작하려고 준비 중인가요?</li>
+                      <li>AI 시연을 직접 보니까 어떤 생각이 드셨어요?</li>
+                      <li>오늘처럼 유명 작가님을 직접 뵐 수 있는 기회, 어떤 것 같으세요?</li>
+                    </ol>
+                    <p class="interview-note">* 자연스럽게 대화하듯 진행 — 카메라 의식하지 않게 편하게 유도</p>
+                  </div>
+
+                </div>
+              </td>
+              <td class="tl-person">영상팀</td>
+            </tr>
+
+            <tr class="tl-row-2">
+              <td class="tl-time-cell">15:00 — 15:50</td>
+              <td class="tl-dur"><strong>50분</strong></td>
+              <td><span class="tl-tag tl-tag-2">2부</span></td>
+              <td class="tl-session"><strong>라마 작가에게 듣는 웹툰 이야기</strong></td>
+              <td class="tl-person"><strong>라마 작가</strong></td>
+            </tr>
+
+            <tr>
+              <td class="tl-time-cell">15:50 — 16:00</td>
+              <td class="tl-dur">10분</td>
+              <td><span class="tl-tag tl-tag-3">3부</span></td>
+              <td class="tl-session">Q&amp;A 세션</td>
+              <td class="tl-person">라마 작가 / 사회자</td>
+            </tr>
+
+            <tr>
+              <td class="tl-time-cell">16:00 — 16:20</td>
+              <td class="tl-dur">20분</td>
+              <td><span class="tl-tag tl-tag-end">마무리</span></td>
+              <td class="tl-session">과정 런칭 이벤트 안내<br><span style="font-size:11px;color:#aaa">나머지 인원 사인회 세팅</span></td>
+              <td class="tl-person">사회자</td>
+            </tr>
+
+            <tr class="tl-row-special">
+              <td class="tl-time-cell">16:20 — 17:00</td>
+              <td class="tl-dur"><strong>30분</strong></td>
+              <td><span class="tl-tag tl-tag-special">특별</span></td>
+              <td class="tl-session">
+                <strong>라마 작가 사인회</strong>
+                <div style="margin-top:10px;font-weight:700;font-size:12px;color:var(--green-dark)">▶ 후반 인터뷰 병행 진행 (영상팀)</div>
+                <div class="interview-wrap">
+
+                  <div class="interview-block">
+                    <div class="interview-who">라마 작가 인터뷰</div>
+                    <ol class="interview-qs">
+                      <li>웹툰 '내일'이 드라마로까지 만들어진 지금, 작가로서 어떤 마음이세요?</li>
+                      <li>웹툰 작가가 되고 싶은 분들에게, 가장 중요하다고 생각하는 게 있다면요?</li>
+                      <li>SBS아카데미 웹툰 과정을 직접 검수하셨는데, 어떤 부분이 가장 의미 있었나요?</li>
+                      <li>오늘 이 자리에 모인 분들처럼 꿈을 꾸는 분들에게 한마디 해주신다면?</li>
+                    </ol>
+                  </div>
+
+                  <div class="interview-block">
+                    <div class="interview-who">참석자 인터뷰 — 사인 받은 직후 <span style="font-weight:400;color:#aaa">(4 — 5명)</span></div>
+                    <ol class="interview-qs">
+                      <li>오늘 세미나 전체적으로 어떠셨어요?</li>
+                      <li>라마 작가님 사인을 직접 받아봤는데, 어떤 기분이에요?</li>
+                      <li>오늘 들은 이야기 중에 가장 마음에 남는 말이 있었나요?</li>
+                      <li>앞으로 어떤 작가가 되고 싶으세요?</li>
+                      <li>이런 경험이 본인한테 어떤 의미인 것 같아요?</li>
+                      <li>웹툰 공부를 막 시작하려는 친구가 있다면 뭐라고 얘기해줄 것 같아요?</li>
+                      <li>오늘 여기 온 게 잘한 선택이었나요? (웃음)</li>
+                    </ol>
+                    <p class="interview-note">* 사인받고 설레는 감정이 살아있는 직후에 바로 촬영 — 감정 생생하게</p>
+                    <p class="interview-note">* 영상 클로징 멘트로 쓸 "앞으로의 꿈" 발언 꼭 확보</p>
+                  </div>
+
+                </div>
+              </td>
+              <td class="tl-person"><strong>라마 작가</strong><br><span style="font-size:11px;color:#aaa">+ 영상팀</span></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05. 활용 채널 -->
+  <section class="section">
+    <div class="container">
+      <div class="fade-in">
+        <p class="section-label">05 Distribution</p>
+        <h2 class="section-title">활용 채널</h2>
+        <p class="section-desc">완성된 영상은 유튜브와 인스타그램으로 운영한다.</p>
+      </div>
+      <div class="channel-grid fade-in delay-1">
+        <div class="channel-card">
+          <div class="channel-icon">▶</div>
+          <div class="channel-name">YouTube</div>
+          <div class="channel-desc">
+            세미나 풀 하이라이트 영상 메인 업로드 (3 — 5분 내외).<br>
+            썸네일은 라마 작가 얼굴 + "너의 내일을 응원해" 텍스트 조합.<br>
+            영상 설명란에 신규 웹툰 과정 신청 링크 필수 삽입.<br>
+            작가 인터뷰 클립을 유튜브 쇼츠로 별도 업로드.
+          </div>
+          <div class="channel-tags">
+            <span class="channel-tag">풀 하이라이트</span>
+            <span class="channel-tag">인터뷰 쇼츠</span>
+            <span class="channel-tag">과정 링크 CTA</span>
+          </div>
+        </div>
+        <div class="channel-card">
+          <div class="channel-icon">◈</div>
+          <div class="channel-name">Instagram</div>
+          <div class="channel-desc">
+            릴스로 60초 이내 감성 하이라이트 업로드.<br>
+            스토리에는 현장 스냅 + 참석자 반응 슬라이드 추가 게시.<br>
+            참석자 인터뷰 발언 중 인상적인 문구를 카드뉴스 형태로도 활용 가능.<br>
+            해시태그: #웹툰 #웹툰작가 #SBS아카데미 #라마작가 #림딩동 #내일웹툰
+          </div>
+          <div class="channel-tags">
+            <span class="channel-tag">릴스</span>
+            <span class="channel-tag">스토리</span>
+            <span class="channel-tag">카드뉴스</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06. 레퍼런스 -->
+  <section class="section">
+    <div class="container">
+      <div class="fade-in">
+        <p class="section-label">06 Reference</p>
+        <h2 class="section-title">참고 영상 유형</h2>
+        <p class="section-desc">편집 톤과 구성 방향 잡을 때 참고하기 좋은 카테고리.</p>
+      </div>
+      <div class="ref-grid fade-in delay-1" style="grid-template-columns: repeat(3, 1fr);">
+
+        <div class="ref-card">
+          <div class="ref-cat">Reference 01</div>
+          <div class="ref-title">세미나 강연 영상</div>
+          <div class="ref-desc">세미나 현장 분위기와 강연 장면을 담은 편집 스타일. 전체적인 흐름과 현장감 구성 방식 참고.</div>
+          <a class="ref-btn" href="https://www.youtube.com/watch?v=92enlp118Sg&list=PLsAVIDV8ZsZZS77RLQnXbwsmKB-PSLNi5&index=14" target="_blank" rel="noopener">영상 보러가기 →</a>
+        </div>
+
+        <div class="ref-card">
+          <div class="ref-cat">Reference 02</div>
+          <div class="ref-title">인터뷰 영상 그래픽 예시</div>
+          <div class="ref-desc">인터뷰 자막 그래픽 처리 방식, 발언 강조 타이틀 카드 스타일 참고.</div>
+          <a class="ref-btn" href="https://www.youtube.com/watch?v=TMYDxa3-Wk8&list=PLsAVIDV8ZsZZS77RLQnXbwsmKB-PSLNi5&index=9" target="_blank" rel="noopener">영상 보러가기 →</a>
+        </div>
+
+        <div class="ref-card">
+          <div class="ref-cat">Reference 03</div>
+          <div class="ref-title">속도감 예시</div>
+          <div class="ref-desc">빠른 컷 편집, 음악 싱크, 에너지감 있는 리듬감 연출 방식 참고. 오프닝·클라이맥스 구간에 적용.</div>
+          <a class="ref-btn" href="https://www.youtube.com/watch?v=wVryWgFTcb0" target="_blank" rel="noopener">영상 보러가기 →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING BANNER -->
+  <div class="container">
+    <div class="closing-banner fade-in">
+      <div class="closing-quote">
+        웹툰 작가를 꿈꾸는 사람들에게 —<br>
+        <span class="hl">"너의 '내일'을 응원해"</span>
+      </div>
+      <div class="closing-sub">영상 마지막에 이 메시지로 마무리.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p><strong>NEXT WEBTOON × 웹툰의 내일</strong> — 세미나 영상 기획서 v2.0</p>
+    <p style="margin-top:6px;">주최 SBS아카데미컴퓨터아트학원 · 주관 교육혁신위원회 · 2026.04.25(토)</p>
+  </footer>
+
+</body>
+</html>
